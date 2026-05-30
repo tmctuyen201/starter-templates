@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Extension</title>
+  <style>
+    /* ── CSS Variables ─────────────────────────── */
+    :root {
+      --primary: #4F46E5;
+      --primary-hover: #4338CA;
+      --bg: #FFFFFF;
+      --bg-secondary: #F9FAFB;
+      --text: #111827;
+      --text-secondary: #6B7280;
+      --border: #E5E7EB;
+      --success: #10B981;
+      --radius: 8px;
+    }
+
+    /* ── Reset & Base ──────────────────────────── */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 360px;
+      min-height: 480px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── Header ────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, var(--primary), #7C3AED);
+      color: white;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .header h1 { font-size: 20px; font-weight: 700; }
+    .header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+
+    /* ── Content ───────────────────────────────── */
+    .content { padding: 20px; }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .card h3 { font-size: 14px; color: var(--text); margin-bottom: 8px; }
+    .card p { font-size: 13px; color: var(--text-secondary); }
+
+    /* ── Toggle Switch ─────────────────────────── */
+    .toggle-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toggle-row:last-child { border-bottom: none; }
+    .toggle-label { font-size: 14px; }
+
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      cursor: pointer;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle .slider {
+      position: absolute;
+      inset: 0;
+      background: #D1D5DB;
+      border-radius: 12px;
+      transition: 0.2s;
+    }
+    .toggle .slider::before {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      left: 3px; top: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+    .toggle input:checked + .slider { background: var(--primary); }
+    .toggle input:checked + .slider::before { transform: translateX(20px); }
+
+    /* ── Button ────────────────────────────────── */
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--primary-hover); }
+
+    /* ── Status ────────────────────────────────── */
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 12px 0;
+    }
+    .status-dot {
+      width: 8px; height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+    }
+
+    /* ── Footer ────────────────────────────────── */
+    .footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🧩 My Extension</h1>
+    <p>Chrome Extension Template v1.0</p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Status -->
+    <div class="status">
+      <span class="status-dot"></span>
+      <span>Extension is active</span>
+    </div>
+
+    <!-- Settings Card -->
+    <div class="card">
+      <h3>⚙️ Settings</h3>
+
+      <div class="toggle-row">
+        <span class="toggle-label">Enable notifications</span>
+        <label class="toggle">
+          <input type="checkbox" id="toggle-notifications" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">Dark mode</span>
+        <label class="toggle">
+          <input type="checkbox" id="toggle-darkmode">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <span class="toggle-label">Auto-update</span>
+        <label class="toggle">
+          <input type="checkbox" id="toggle-autoupdate" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Info Card -->
+    <div class="card">
+      <h3>📊 Statistics</h3>
+      <p>Pages visited: <strong id="page-count">0</strong></p>
+      <p>Last active: <strong id="last-active">Never</strong></p>
+    </div>
+
+    <!-- Action Button -->
+    <button class="btn" id="action-btn">🚀 Run Action</button>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Built with ❤️ by <a href="https://github.com/tmctuyen201" target="_blank">tmctuyen201</a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="popup.js"></script>
+
+</body>
+</html>
