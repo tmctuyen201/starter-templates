@@ -1,190 +1,138 @@
 # 🚀 Starter Templates
 
-<div align="center">
+<p align="center">
+  <img src="https://img.shields.io/badge/templates-3-blue?style=for-the-badge" alt="Templates">
+  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/badge/python-3.9+-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/github/stars/tmctuyen201/starter-templates?style=for-the-badge" alt="Stars">
+</p>
 
-[![Python](https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/tmctuyen201/starter-templates?style=for-the-badge&logo=github&color=yellow)](https://github.com/tmctuyen201/starter-templates/stargazers)
-[![Templates](https://img.shields.io/badge/Templates-3-orange?style=for-the-badge)](#-templates)
-
-**Production-ready project templates to ship your next product in hours, not weeks.**
-
-Each template includes authentication, deployment configs, CI/CD, and best practices built-in.
-
-[Templates](#-templates) • [Quick Start](#-quick-start) • [Premium](#-premium-templates--49)
-
-</div>
+> 🧰 Production-ready starter templates to kickstart your next project. Copy, customize, and ship in minutes.
 
 ---
 
-## 📦 Templates
+## 📦 Available Templates
 
-### 1. 🍦 FastAPI + HTMX + SQLite — Micro-SaaS Starter
+| Template | Description | Stack | Complexity |
+|----------|-------------|-------|------------|
+| 🌶️ **[FastAPI + HTMX](./fastapi-htmx/)** | Full-stack web app with no JavaScript framework | FastAPI, HTMX, Jinja2 | ⭐ Easy |
+| 🤖 **[Telegram Bot](./telegram-bot/)** | Feature-rich Telegram bot with payment integration | python-telegram-bot, Stripe | ⭐⭐ Medium |
+| 🧩 **[Chrome Extension](./chrome-extension/)** | Modern Chrome extension with popup UI | Manifest V3, HTML/CSS/JS | ⭐ Easy |
 
-**Perfect for:** Side projects, micro-SaaS, internal tools, admin dashboards
+---
 
-| Feature | Included |
-|---------|----------|
-| FastAPI backend | ✅ |
-| HTMX frontend (no JS framework needed) | ✅ |
-| SQLite database | ✅ |
-| User authentication (JWT) | ✅ |
-| Docker + docker-compose | ✅ |
-| Makefile with dev commands | ✅ |
-| GitHub Actions CI | ✅ |
-| TailwindCSS styling | ✅ |
+## 🌶️ FastAPI + HTMX Template
 
-**Quick Start:**
+Build modern, reactive web applications **without writing JavaScript**. HTMX lets you create dynamic UIs using only HTML attributes.
+
+**Features:**
+- ⚡ FastAPI backend with async support
+- 🔄 HTMX for seamless partial page updates
+- 🎨 Jinja2 templates with Tailwind CSS
+- 📦 SQLite database with SQLAlchemy
+- 🐳 Docker-ready deployment
+
 ```bash
-cd templates/fastapi-htmx-sqlite
-cp .env.example .env
-docker-compose up -d
-# Open http://localhost:8000
+cd fastapi-htmx
+pip install -r requirements.txt
+uvicorn main:app --reload
 ```
 
-**Tech Stack:** FastAPI · HTMX · SQLite · TailwindCSS · Docker
-
 ---
 
-### 2. 🤖 Telegram Bot with Payments — Stripe Integration
+## 🤖 Telegram Bot Template
 
-**Perfect for:** Paid bots, digital product delivery, subscription services, SaaS bots
+A production-ready Telegram bot with built-in payment processing, inline keyboards, and conversation handling.
 
-| Feature | Included |
-|---------|----------|
-| python-telegram-bot | ✅ |
-| Stripe payment integration | ✅ |
-| Webhook handler | ✅ |
-| User database (SQLite) | ✅ |
-| Subscription management | ✅ |
-| Docker + docker-compose | ✅ |
-| Makefile | ✅ |
-| Admin commands | ✅ |
+**Features:**
+- 💳 Stripe payment integration
+- 🔘 Inline keyboard menus
+- 💬 Conversation state management
+- 📊 User analytics tracking
+- 🌐 Webhook & polling modes
 
-**Quick Start:**
 ```bash
-cd templates/telegram-bot-payments
-cp .env.example .env
-# Edit .env with your BOT_TOKEN and STRIPE_KEY
-docker-compose up -d
+cd telegram-bot
+pip install -r requirements.txt
+export TELEGRAM_TOKEN="your-token"
+python bot.py
 ```
 
-**Tech Stack:** Python · Telegram Bot API · Stripe · SQLite · Docker
-
 ---
 
-### 3. 🧩 Chrome Extension — Manifest V3 + React
+## 🧩 Chrome Extension Template
 
-**Perfect for:** Browser extensions, SaaS tools, productivity apps
+A modern Chrome extension built with Manifest V3. Includes popup UI, background service worker, and content script examples.
 
-| Feature | Included |
-|---------|----------|
-| Manifest V3 | ✅ |
-| React 18 + TypeScript | ✅ |
-| Vite build system | ✅ |
-| Content scripts | ✅ |
-| Background service worker | ✅ |
-| Popup + Options page | ✅ |
-| Chrome Storage API | ✅ |
-| Hot reload in dev | ✅ |
+**Features:**
+- 📋 Manifest V3 (latest standard)
+- 🎨 Clean popup UI with CSS variables
+- 🔔 Chrome notifications API
+- 💾 Chrome storage API
+- 🧪 Ready for Chrome Web Store submission
 
-**Quick Start:**
 ```bash
-cd templates/chrome-extension-react
-npm install
-npm run dev
-# Load dist/ folder in chrome://extensions
+# Load in Chrome:
+# 1. Open chrome://extensions
+# 2. Enable Developer Mode
+# 3. Click "Load unpacked" → select chrome-extension/
 ```
 
-**Tech Stack:** React · TypeScript · Vite · Chrome Manifest V3
-
 ---
 
-## 🚀 Quick Start
+## 🏁 Quick Start
 
 ```bash
-# Clone the repo
+# Clone all templates
 git clone https://github.com/tmctuyen201/starter-templates.git
 cd starter-templates
 
-# Choose a template
-cd templates/fastapi-htmx-sqlite    # For web apps
-cd templates/telegram-bot-payments   # For Telegram bots
-cd templates/chrome-extension-react  # For browser extensions
-
-# Follow the template's README
-cp .env.example .env
+# Pick a template and start building!
+cd fastapi-htmx   # or telegram-bot / chrome-extension
 ```
 
 ---
 
-## 📁 Each Template Includes
+## ⭐ Premium Templates — $49
 
-```
-template/
-├── README.md          # Detailed setup guide
-├── Makefile           # Dev commands (make dev, make test, make deploy)
-├── docker-compose.yml # One-command deployment
-├── .env.example       # Environment variables template
-├── .github/
-│   └── workflows/
-│       └── ci.yml     # GitHub Actions CI
-├── src/               # Source code
-├── tests/             # Test suite
-└── docs/              # Documentation
-```
+<p align="center">
+  <img src="https://img.shields.io/badge/💎_Premium_Templates-$49-gold?style=for-the-badge&logo=stripe&logoColor=white" alt="Premium">
+</p>
 
----
+Unlock **15+ premium templates** for serious developers:
 
-## 💎 Premium Templates — $49
+- 🏢 **SaaS Boilerplate** — Auth, billing, dashboard, multi-tenant
+- 📱 **React Native Starter** — Cross-platform mobile app template
+- 🛒 **E-commerce API** — Full REST API with Stripe, inventory, orders
+- 📊 **Admin Dashboard** — Analytics, charts, CRUD, role-based access
+- 🔐 **Auth Microservice** — OAuth2, JWT, 2FA, social login
+- 📝 **Blog Platform** — Markdown editor, SEO, comments, RSS
+- 🤖 **AI Chat App** — OpenAI integration, streaming, history
+- 📧 **Email Service** — Templates, queues, tracking, webhooks
 
-Get the **complete collection** with production-ready features:
-
-| Feature | Free | Premium ($49) |
-|---------|------|---------------|
-| Basic templates | ✅ | ✅ |
-| Stripe full integration | ❌ | ✅ |
-| OAuth (Google, GitHub) | ❌ | ✅ |
-| Role-based access control | ❌ | ✅ |
-| Email notifications | ❌ | ✅ |
-| Deployment guides (AWS, Vercel, Railway) | ❌ | ✅ |
-| CI/CD templates | ❌ | ✅ |
-| Database migrations | ❌ | ✅ |
-| Monitoring & logging | ❌ | ✅ |
-| Priority support | ❌ | ✅ |
-| Lifetime updates | ❌ | ✅ |
-
-### 🎁 Get Premium
-
-**👉 [Buy Premium Templates — $49](https://gumroad.com/l/starter-templates-premium)**
-
-> 🎉 **Launch Special:** Use code `SHIP50` for 50% off!
+> 💳 **One-time payment. Lifetime updates. Free new templates added monthly.**
+>
+> 👉 [Get Premium Templates](https://gumroad.com/l/starter-templates-premium) — Use code `SHIP50` for 50% off!
 
 ---
 
 ## 🤝 Contributing
 
-```bash
-git clone https://github.com/tmctuyen201/starter-templates.git
-cd starter-templates
-# Add your template in templates/
-# Submit a PR!
-```
+Have a great starter template? Contributions are welcome!
+
+1. Fork the repository
+2. Add your template in a new directory
+3. Include a clear README with setup instructions
+4. Submit a Pull Request
 
 ---
 
 ## 📄 License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License — use these templates freely in personal and commercial projects.
 
 ---
 
-<div align="center">
-
-**⭐ Star this repo if it helped you ship faster!**
-
-Made with ❤️ by [@tmctuyen201](https://github.com/tmctuyen201)
-
-[![Twitter](https://img.shields.io/twitter/follow/tmctuyen201?style=social)](https://twitter.com/tmctuyen201)
-
-</div>
+<p align="center">
+  Built with ❤️ by <a href="https://github.com/tmctuyen201">tmctuyen201</a>
+</p>
